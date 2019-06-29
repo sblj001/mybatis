@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yootk.dao.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    nid, title
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.vo.News">
+    insert into news (nid, title, content
+      )
+    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.vo.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        #{nid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.vo.News">
+    update news
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    nid, title
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.vo.News">
+    insert into news (nid, title, content
+      )
+    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.vo.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        #{nid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.vo.News">
+    update news
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    nid, title
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.vo.News">
+    insert into news (nid, title, content
+      )
+    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.vo.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        #{nid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.vo.News">
+    update news
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    nid, title
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.vo.News">
+    insert into news (nid, title, content
+      )
+    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.vo.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        #{nid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.vo.News">
+    update news
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yootk.vo.News">
+    <constructor>
+      <idArg column="nid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    nid, title
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from news
+    where nid = #{nid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yootk.vo.News">
+    insert into news (nid, title, content
+      )
+    values (#{nid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yootk.vo.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        nid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nid != null">
+        #{nid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yootk.vo.News">
+    update news
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yootk.vo.News">
+    update news
+    set title = #{title,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=BIGINT}
+  </update>
+</mapper>
